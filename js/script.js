@@ -63,7 +63,7 @@ form.addEventListener('submit', (e) => {
         movieDB.movies.push(addMovie);
         movieList.append(addNewMovie);
         movieSort(movieLists);
-        // triggerCarts = document.querySelectorAll('.delete');
+        triggerCarts = document.querySelectorAll('.delete');
         setTimeout(() => {
             input.value = '';
         }, 200);
@@ -82,30 +82,26 @@ let triggerCarts = document.querySelectorAll('.delete');
 console.log(triggerCarts);
 function deleteMovie() {
 
-    for (let i = 0; i < triggerCarts.length; i++) {
-        triggerCarts[i].addEventListener('click', () => {
-            movieLists.forEach((list, x) => {
-                if (i == x) {
-                    list.remove();
-                }
-            })
+    triggerCarts.forEach((item, i) => {
+        item.addEventListener('click', (e) => {
+            item.parentNode.remove();
+            item.remove();
             movieDB.movies.forEach((movieInDb, j) => {
                 if (i == j) {
-                    movieDB.movies.splice(j, 1);
-                    console.log(movieInDb);
+                    movieDB.movies.splice(i, 1);
                 }
             });
-            triggerCarts = document.querySelectorAll('.delete');
-            movieLists = document.querySelectorAll('.promo__interactive-item');
+
             console.log(movieDB.movies);
+            triggerCarts = document.querySelectorAll('.promo__interactive-item div');
+            movieLists = document.querySelectorAll('.promo__interactive-item');
             movieSort(movieLists);
             console.log(movieLists);
+            triggerCarts = document.querySelectorAll('.promo__interactive-item div');
             console.log(triggerCarts);
-            // --i;
-            console.log(i);
         });
 
-    }
+    });
 
 }
 
@@ -129,25 +125,7 @@ function chacked() {
 chacked();
 
 
-triggerCarts.forEach((item, i) => {
-    item.addEventListener('click', (e) => {
-        item.parentNode.remove();
-        item.remove();
-        movieDB.movies.forEach((movieInDb, j) => {
-            movieDB.movies.splice(i, 1);
-            console.log(movieInDb);
-        });
 
-        console.log(movieDB.movies);
-        triggerCarts = document.querySelectorAll('.promo__interactive-item div');
-        movieLists = document.querySelectorAll('.promo__interactive-item');
-        movieSort(movieLists);
-        console.log(movieLists);
-        triggerCarts = document.querySelectorAll('.promo__interactive-item div');
-        console.log(triggerCarts);
-    });
-
-});
 
 
 
