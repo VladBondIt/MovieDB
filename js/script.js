@@ -13,14 +13,8 @@ const movieDB = {
 const form = document.querySelector('.add'),
     input = document.querySelector('.adding__input'),
     movieList = document.querySelector('.promo__interactive-list'),
-    btnForm = form.querySelector('button');
-
-
-
-
-
-
-const ads = document.querySelectorAll('.promo__adv img'),
+    btnForm = form.querySelector('button'),
+    ads = document.querySelectorAll('.promo__adv img'),
     promoGenre = document.querySelector('.promo__genre'),
     promoBg = document.querySelector('.promo__bg'),
     titleAds = document.querySelector('.promo__adv-title');
@@ -62,30 +56,35 @@ movieSort(movieLists);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let addMovie = input.value;
-    let addNewMovie = document.createElement('li');
-    addNewMovie.innerHTML = addMovie;
-    addNewMovie.classList.add('promo__interactive-item');
-    movieDB.movies.push(addMovie);
-    movieList.append(addNewMovie);
-    movieSort(movieLists);
-    // triggerCarts = document.querySelectorAll('.delete');
-    setTimeout(() => {
-        input.value = '';
-    }, 200);
+    if (addMovie != '' && addMovie.length <= 21) {
+        let addNewMovie = document.createElement('li');
+        addNewMovie.innerHTML = addMovie;
+        addNewMovie.classList.add('promo__interactive-item');
+        movieDB.movies.push(addMovie);
+        movieList.append(addNewMovie);
+        movieSort(movieLists);
+        // triggerCarts = document.querySelectorAll('.delete');
+        setTimeout(() => {
+            input.value = '';
+        }, 200);
+    }
 });
 
 
 // delete film
 
 let triggerCarts = document.querySelectorAll('.delete');
+console.log(triggerCarts);
 function deleteMovie() {
 
     for (let i = 0; i < triggerCarts.length; i++) {
         triggerCarts[i].addEventListener('click', () => {
-            console.log(triggerCarts[i]);
-            triggerCarts[i].parentNode.remove();
-            triggerCarts[i].remove();
-            // i--;
+            triggerCarts.pop();
+            movieLists.forEach((list, x) => {
+                if (i == x) {
+                    list.remove();
+                }
+            })
             movieDB.movies.forEach((movieInDb, j) => {
                 if (i == j) {
                     movieDB.movies.splice(j, 1);
@@ -98,6 +97,8 @@ function deleteMovie() {
             movieSort(movieLists);
             console.log(movieLists);
             console.log(triggerCarts);
+            // --i;
+            console.log(i);
         });
 
     }
