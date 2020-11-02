@@ -107,6 +107,22 @@ function deleteMovie() {
 deleteMovie();
 
 
+function chacked() {
+    let checkbox = document.querySelector('.add__yes input')
+    checkbox.addEventListener('click', () => {
+        if (checkbox.hasAttribute('checked') == false) {
+            checkbox.setAttribute('checked', 'checked');
+            console.log("Добавляем любимый фильм");
+        } else {
+            checkbox.removeAttribute('checked');
+        }
+    });
+
+}
+
+
+chacked();
+
 
 // triggerCarts.forEach((item, i) => {
     //     item.addEventListener('click', (e) => {
