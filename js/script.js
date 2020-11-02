@@ -56,7 +56,7 @@ movieSort(movieLists);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let addMovie = input.value;
-    if (addMovie != '' && addMovie.length <= 21) {
+    if (addMovie != '...' && addMovie != ' ' && addMovie != '' && addMovie.length <= 21) {
         let addNewMovie = document.createElement('li');
         addNewMovie.innerHTML = addMovie;
         addNewMovie.classList.add('promo__interactive-item');
@@ -67,6 +67,11 @@ form.addEventListener('submit', (e) => {
         setTimeout(() => {
             input.value = '';
         }, 200);
+    } else {
+        input.value = '...';
+        setTimeout(() => {
+            input.value = '';
+        }, 1400);
     }
 });
 
@@ -79,7 +84,6 @@ function deleteMovie() {
 
     for (let i = 0; i < triggerCarts.length; i++) {
         triggerCarts[i].addEventListener('click', () => {
-            triggerCarts.pop();
             movieLists.forEach((list, x) => {
                 if (i == x) {
                     list.remove();
@@ -125,24 +129,25 @@ function chacked() {
 chacked();
 
 
-// triggerCarts.forEach((item, i) => {
-    //     item.addEventListener('click', (e) => {
-    //         item.parentNode.remove();
-    //         item.remove();
-    //         movieDB.movies.forEach((movieInDb, j) => {
-    //             if (i == j) {
-    //                 movieDB.movies.splice(i, 1);
-    //                 console.log(movieInDb);
-    //             }
-    //         });
-    //         console.log(movieDB.movies);
-    //         triggerCarts = document.querySelectorAll('.promo__interactive-item div');
-    //         movieLists = document.querySelectorAll('.promo__interactive-item');
-    //         movieSort(movieLists);
-    //         console.log(movieLists);
-    //         triggerCarts = document.querySelectorAll('.promo__interactive-item div');
-    //         console.log(triggerCarts);
-    //     });
-    // });
+triggerCarts.forEach((item, i) => {
+    item.addEventListener('click', (e) => {
+        item.parentNode.remove();
+        item.remove();
+        movieDB.movies.forEach((movieInDb, j) => {
+            movieDB.movies.splice(i, 1);
+            console.log(movieInDb);
+        });
+
+        console.log(movieDB.movies);
+        triggerCarts = document.querySelectorAll('.promo__interactive-item div');
+        movieLists = document.querySelectorAll('.promo__interactive-item');
+        movieSort(movieLists);
+        console.log(movieLists);
+        triggerCarts = document.querySelectorAll('.promo__interactive-item div');
+        console.log(triggerCarts);
+    });
+
+});
+
 
 
