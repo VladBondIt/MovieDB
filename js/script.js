@@ -1,17 +1,3 @@
-/* Задания на урок:
-
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
-
-2) Изменить жанр фильма, поменять "комедия" на "драма"
-
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
-
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
-
-5) Добавить нумерацию выведенных фильмов */
-
 'use strict';
 
 const movieDB = {
@@ -24,12 +10,22 @@ const movieDB = {
     ]
 };
 
+const form = document.querySelector('.add'),
+    input = document.querySelector('.adding__input'),
+    movieList = document.querySelector('.promo__interactive-list'),
+    btnForm = form.querySelector('button');
+
+
+
+
+
 
 const ads = document.querySelectorAll('.promo__adv img'),
     promoGenre = document.querySelector('.promo__genre'),
     promoBg = document.querySelector('.promo__bg'),
-    movieLists = document.querySelectorAll('.promo__interactive-item'),
     titleAds = document.querySelector('.promo__adv-title');
+
+let movieLists = document.querySelectorAll('.promo__interactive-item');
 
 titleAds.remove();
 ads.forEach(item => {
@@ -39,12 +35,96 @@ ads.forEach(item => {
 promoGenre.textContent = 'Драма';
 promoBg.style.background = `url('../img/bg.jpg') center / 100% 100% no-repeat`;
 
-movieDB.movies.sort();
+// CREATE CART !!!
 
-movieLists.forEach((list, j) => {
-    movieDB.movies.forEach((item, i) => {
-        if (i == j) {
-            list.textContent = `№ ${i + 1} ${item}`;
-        }
+
+
+function movieSort(lists) {
+    lists = document.querySelectorAll('.promo__interactive-item');
+    movieDB.movies.sort();
+    lists.forEach((list, j) => {
+        movieDB.movies.forEach((item, i) => {
+            if (i == j) {
+                list.innerHTML = `№ ${j + 1} ${item}`;
+            }
+        });
+        let cart = document.createElement('div');
+        cart.classList.add('delete');
+        list.append(cart);
+
     });
+    triggerCarts = document.querySelectorAll('.delete');
+}
+
+movieSort(movieLists);
+
+// Form add
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let addMovie = input.value;
+    let addNewMovie = document.createElement('li');
+    addNewMovie.innerHTML = addMovie;
+    addNewMovie.classList.add('promo__interactive-item');
+    movieDB.movies.push(addMovie);
+    movieList.append(addNewMovie);
+    movieSort(movieLists);
+    // triggerCarts = document.querySelectorAll('.delete');
+    setTimeout(() => {
+        input.value = '';
+    }, 200);
 });
+
+
+// delete film
+
+var triggerCarts = document.querySelectorAll('.delete');
+function deleteMovie() {
+
+    for (let i = 0; i < triggerCarts.length; i++) {
+        triggerCarts[i].addEventListener('click', () => {
+            console.log(triggerCarts[i]);
+            triggerCarts[i].parentNode.remove();
+            triggerCarts[i].remove();
+            // i--;
+            movieDB.movies.forEach((movieInDb, j) => {
+                if (i == j) {
+                    movieDB.movies.splice(j, 1);
+                    console.log(movieInDb);
+                }
+            });
+            console.log(movieDB.movies);
+            movieSort(movieLists);
+            console.log(movieLists);
+            console.log(triggerCarts);
+        });
+
+    }
+
+}
+
+deleteMovie();
+
+
+
+// triggerCarts.forEach((item, i) => {
+    //     item.addEventListener('click', (e) => {
+    //         item.parentNode.remove();
+    //         item.remove();
+    //         movieDB.movies.forEach((movieInDb, j) => {
+    //             if (i == j) {
+    //                 movieDB.movies.splice(i, 1);
+    //                 console.log(movieInDb);
+    //             }
+    //         });
+    //         console.log(movieDB.movies);
+    //         triggerCarts = document.querySelectorAll('.promo__interactive-item div');
+    //         movieLists = document.querySelectorAll('.promo__interactive-item');
+    //         movieSort(movieLists);
+    //         console.log(movieLists);
+    //         triggerCarts = document.querySelectorAll('.promo__interactive-item div');
+    //         console.log(triggerCarts);
+    //     });
+    // });
+
+

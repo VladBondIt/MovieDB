@@ -261,81 +261,6 @@
   cursor: pointer;
 }
 
-.promo__interactive .add .promo__interactive-title {
-  margin-bottom: 25px;
-}
-
-.promo__interactive .add span {
-  display: block;
-  margin: 10px 0;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  color: #000000;
-}
-
-.promo__interactive .add .yes {
-  display: inline;
-  margin-left: 10px;
-}
-
-.promo__interactive .add input[type="text"] {
-  width: 270px;
-  height: 45px;
-  line-height: 50px;
-  font-size: 16px;
-  background: rgba(196, 196, 196, 0.29);
-  border: 1px solid rgba(0, 0, 0, 0.19);
-  padding: 0 15px;
-  outline: none;
-  border-radius: 4px;
-}
-
-.promo__interactive .add input[type="text"]::-webkit-input-placeholder {
-  font-weight: 300;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.53);
-}
-
-.promo__interactive .add input[type="text"]:-ms-input-placeholder {
-  font-weight: 300;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.53);
-}
-
-.promo__interactive .add input[type="text"]::-ms-input-placeholder {
-  font-weight: 300;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.53);
-}
-
-.promo__interactive .add input[type="text"]::placeholder {
-  font-weight: 300;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.53);
-}
-
-.promo__interactive .add button {
-  display: block;
-  margin-top: 15px;
-  width: 170px;
-  height: 45px;
-  background: #ffd500;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 14px;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.promo__interactive .add button:active {
-  -webkit-transform: scale(0.95);
-      -ms-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
 .promo__adv {
   background: #212121;
   width: 300px;
@@ -354,4 +279,83 @@
 .promo__adv img {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.promo__interactive-title {
+  margin-bottom: 25px;
+}
+
+.add span {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.add__yes {
+  display: inline;
+  margin-left: 10px;
+}
+
+.add__yes input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.add input[type="text"] {
+  width: 270px;
+  height: 45px;
+  line-height: 50px;
+  font-size: 16px;
+  background: rgba(196, 196, 196, 0.29);
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  padding: 0 15px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.add input[type="text"]::-webkit-input-placeholder {
+  font-weight: 300;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add input[type="text"]:-ms-input-placeholder {
+  font-weight: 300;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add input[type="text"]::-ms-input-placeholder {
+  font-weight: 300;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add input[type="text"]::placeholder {
+  font-weight: 300;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add button {
+  display: block;
+  margin-top: 15px;
+  width: 170px;
+  height: 45px;
+  background: #ffd500;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 14px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.add button:active {
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
 }
