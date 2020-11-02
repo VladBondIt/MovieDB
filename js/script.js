@@ -53,7 +53,6 @@ function movieSort(lists) {
         list.append(cart);
 
     });
-    triggerCarts = document.querySelectorAll('.delete');
 }
 
 movieSort(movieLists);
@@ -78,7 +77,7 @@ form.addEventListener('submit', (e) => {
 
 // delete film
 
-var triggerCarts = document.querySelectorAll('.delete');
+let triggerCarts = document.querySelectorAll('.delete');
 function deleteMovie() {
 
     for (let i = 0; i < triggerCarts.length; i++) {
@@ -93,6 +92,8 @@ function deleteMovie() {
                     console.log(movieInDb);
                 }
             });
+            triggerCarts = document.querySelectorAll('.delete');
+            movieLists = document.querySelectorAll('.promo__interactive-item');
             console.log(movieDB.movies);
             movieSort(movieLists);
             console.log(movieLists);
