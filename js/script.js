@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let addMovie = input.value.toUpperCase();
         const fav = checkbox.checked;
         if (addMovie != '...' && addMovie != ' ' && addMovie != '') {
-            if (addMovie.length > 21) {
-                addMovie = `${addMovie.substring(0, 22)}...`;
+            if (addMovie.length > 15) {
+                addMovie = `${addMovie.substring(0, 15)}...`;
             }
 
             if (fav) {
